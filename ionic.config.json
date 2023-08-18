@@ -1,0 +1,8 @@
+{
+  "name": "ionicPnrr",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "7ca24d6d"
+}
