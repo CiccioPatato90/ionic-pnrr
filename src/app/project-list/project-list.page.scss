@@ -1,0 +1,10 @@
+.horizontal-scroll-list{
+  display: flex;
+  overflow-x: auto;
+}
+
+.select-label-allign{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

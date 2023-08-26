@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Seleziona gli attributi da raggruppare
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let attr of attributes">
+      <ion-label>{{ attr }}</ion-label>
+      <ion-checkbox [value]="checkBoxItems.get(attr)" (ionChange)="toggleCheckbox(attr, $event)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Conferma</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

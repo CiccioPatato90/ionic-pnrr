@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-back-button></ion-back-button>
+
+        <ion-title>Lista Progetti</ion-title>
+
+        <ion-button (click)="clearFilters($event)">
+          <ion-icon slot="icon-only" icon="close-outline"></ion-icon>
+        </ion-button>
+
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-list class="horizontal-scroll-list">
+        <ion-col *ngFor="let proj of projAttrSelectable" class="select-label-allign">
+          <ion-label class="ion-text-sm-center">{{projAttrConvMap.get(proj)}}</ion-label>
+          <ion-item>
+            <ion-select [value]="filterMap.get(proj)" (ionChange)="attrChanged($event, proj)" style="width: 100%">
+              <ion-select-option *ngFor="let opt of projAttrSelectableMap.get(proj)">{{opt}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-list>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list class="scrollable-list">
+          <app-project-list-tile [attributes]="projAttr" [projects]="displayedData"></app-project-list-tile>
+        </ion-list>
+        <ion-infinite-scroll (ionInfinite)="loadNextBatch($event)">
+          <ion-infinite-scroll-content loadingText="Loading more projects..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
